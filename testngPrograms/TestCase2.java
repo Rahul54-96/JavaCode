@@ -6,17 +6,18 @@ import java.util.Set;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-
+@Listeners(ListenerLogic.class)
 public class TestCase2 extends BaseTest{
-	@Test
-	public void loginToAMazon_Cart() throws InterruptedException
+	@Test(retryAnalyzer=RetryLogic.class)
+	public void loginToAMazonAndAddingToCart() throws InterruptedException
 	{
 		WebElement e1=	driver.findElement(By.id("twotabsearchtextbox"));
 		e1.sendKeys("shoe");
 		WebElement e2=	driver.findElement(By.id("nav-search-submit-button"));
 		e2.click();
-		Thread.sleep(3000);
+		Thread.sleep(7000);
 		
 		List<WebElement>	list =driver.findElements(By.xpath("//a[@class='a-link-normal s-no-outline']"));
 		list.get(0).click();
@@ -28,7 +29,8 @@ public class TestCase2 extends BaseTest{
 				String cid=				pcid.next();
 				driver.switchTo().window(cid);
 				Thread.sleep(3000);
+				WebElement addToCart=	driver.findElement(By.id("manishn"));		
 
-			WebElement addToCart=	driver.findElement(By.id("add-to-cart-button"));		
+			//WebElement addToCart=	driver.findElement(By.id("add-to-cart-button"));		
 			addToCart.click();	}
 }

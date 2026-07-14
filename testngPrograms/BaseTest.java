@@ -9,9 +9,8 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 
 
-public class BaseTest 
+public class BaseTest extends ListenerLogic
 {
-	WebDriver driver;//Interface
 	@Parameters("browser")
 	@BeforeMethod
 	public void launchBrowser(String nameOfBrowser) throws InterruptedException
