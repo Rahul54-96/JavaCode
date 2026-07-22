@@ -4,12 +4,13 @@ import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-
+@Listeners(ListenerLogic.class)
 public class TestCase1 extends BaseTest
 {
-	@Test
-	public void loginToAMazon() throws InterruptedException
+	@Test(retryAnalyzer=RetryLogic.class)
+	public void loginToAMazonWithValidCredentails() throws InterruptedException
 	{
 		
 		Thread.sleep(3000);
